@@ -4,13 +4,13 @@ public class Rover {
 
     private int xCoordinate;
     private int yCoordinate;
-    private char direction;
+    private Direction direction;
 
     public Rover() {
-        this(0, 0, 'N');
+        this(0, 0, Direction.N);
     }
 
-    public Rover(int xCoordinate, int yCoordinate, char direction) {
+    public Rover(int xCoordinate, int yCoordinate, Direction direction) {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.direction = direction;
@@ -24,51 +24,21 @@ public class Rover {
         return yCoordinate;
     }
 
-    public char getDirection() {
+    public Direction getDirection() {
         return direction;
     }
 
+    // Moves forward by adding the directional components to rover's position
     public void moveForward() {
-        switch(direction) {
-            case 'N':
-                xCoordinate += 0;
-                yCoordinate += 1;
-                break;
-            case 'E':
-                xCoordinate += 1;
-                yCoordinate += 0;
-                break;
-            case 'W':
-                xCoordinate += 1;
-                yCoordinate += 0;
-                break;
-            case 'S':
-                xCoordinate += 1;
-                yCoordinate += 0;
-                break;
-        }
-
+        this.xCoordinate += direction.getxComponent();
+        this.yCoordinate += direction.getyComponent();
     }
 
+    // Moves backward by subtracting the directional components from rover's
+    // position
     public void moveBackward() {
-        switch(direction) {
-            case 'N':
-                xCoordinate -= 0;
-                yCoordinate -= 1;
-                break;
-            case 'E':
-                xCoordinate -= 1;
-                yCoordinate -= 0;
-                break;
-            case 'W':
-                xCoordinate += 1;
-                yCoordinate += 0;
-                break;
-            case 'S':
-                xCoordinate += 1;
-                yCoordinate += 0;
-                break;
-        }
+        this.xCoordinate -= direction.getxComponent();
+        this.yCoordinate -= direction.getyComponent();
 
     }
 
