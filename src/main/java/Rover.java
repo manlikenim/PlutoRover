@@ -42,10 +42,12 @@ public class Rover {
 
     }
 
+    // Rotate the rover 90 degrees clockwise
     public void rotateRight() {
         this.direction = direction.rotateRight();
     }
 
+    // Rotate the rover 90 degrees anticlockwise
     public void rotateLeft() {
         this.direction = direction.rotateLeft();
     }
