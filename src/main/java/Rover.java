@@ -42,4 +42,11 @@ public class Rover {
 
     }
 
+    public void rotateRight() {
+        this.direction = direction.rotateRight();
+    }
+
+    public void rotateLeft() {
+        this.direction = direction.rotateLeft();
+    }
 }

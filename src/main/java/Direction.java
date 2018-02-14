@@ -20,4 +20,14 @@ public enum Direction {
     public int getyComponent() {
         return yComponent;
     }
+
+    public Direction rotateRight() {
+        int numValues = values().length;
+        return values()[(ordinal() + numValues + 1) % numValues];
+    }
+
+    public Direction rotateLeft() {
+        int numValues = values().length;
+        return values()[(ordinal() + numValues - 1) % numValues];
+    }
 }
