@@ -40,10 +40,13 @@ public class Planet {
     }
 
 
+    // Adds an obstacle in the given coordinate
     public void addObstacle(int xCoordinate, int yCoordinate) {
         this.grid[yCoordinate][xCoordinate] = -1;
     }
 
+
+    // Checks if the given coordinate has an obstacle
     public boolean hasObstacle(int xCoordinate, int yCoordinate) {
         return this.grid[yCoordinate][xCoordinate] == -1;
     }

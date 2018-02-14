@@ -37,23 +37,15 @@ public class Rover {
         return direction;
     }
 
+
     // Moves forward by adding the directional components to rover's position
     public void moveForward() {
         int newXCoordinate = xCoordinate + direction.getxComponent();
         int newYCoordinate = yCoordinate + direction.getyComponent();
 
-        newXCoordinate = wrapXCoordinate(newXCoordinate);
-        newYCoordinate = wrapYCoordinate(newYCoordinate);
-
-        if (planet.hasObstacle(newXCoordinate, newYCoordinate)) {
-            System.out.println("Rover has encountered an obstacle at (" +
-                    newXCoordinate + ", " + newYCoordinate + ").");
-            return;
-        }
-
-        this.xCoordinate = newXCoordinate;
-        this.yCoordinate = newYCoordinate;
+        updatePosition(newXCoordinate, newYCoordinate);
     }
+
 
     // Moves backward by subtracting the directional components from rover's
     // position
@@ -61,6 +53,13 @@ public class Rover {
         int newXCoordinate = xCoordinate - direction.getxComponent();
         int newYCoordinate = yCoordinate - direction.getyComponent();
 
+        updatePosition(newXCoordinate, newYCoordinate);
+    }
+
+
+    // Helper method which handles wrapping around the planet and obstacle
+    // detection
+    private void updatePosition(int newXCoordinate, int newYCoordinate) {
         newXCoordinate = wrapXCoordinate(newXCoordinate);
         newYCoordinate = wrapYCoordinate(newYCoordinate);
 
@@ -74,6 +73,7 @@ public class Rover {
         this.yCoordinate = newYCoordinate;
     }
 
+
     // Helper method that wraps the given x coordinate according to the
     // width of the planet
     private int wrapXCoordinate(int newXCoordinate) {
@@ -82,6 +82,7 @@ public class Rover {
         return newXCoordinate;
 
     }
+
 
     // Helper method that wraps the given y coordinate according to the
     // length of the planet
@@ -96,6 +97,7 @@ public class Rover {
     public void rotateRight() {
         this.direction = direction.rotateRight();
     }
+
 
     // Rotate the rover 90 degrees anticlockwise
     public void rotateLeft() {
