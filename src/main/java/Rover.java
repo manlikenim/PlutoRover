@@ -30,17 +30,23 @@ public class Rover {
 
     // Moves forward by adding the directional components to rover's position
     public void moveForward() {
-        this.xCoordinate += direction.getxComponent();
-        this.yCoordinate += direction.getyComponent();
+        int newXCoordinate = xCoordinate + direction.getxComponent();
+        int newYCoordinate = yCoordinate + direction.getyComponent();
+
+        this.xCoordinate =  (newXCoordinate + 100) % 100;
+        this.yCoordinate = (newYCoordinate + 100) % 100;
     }
 
     // Moves backward by subtracting the directional components from rover's
     // position
     public void moveBackward() {
-        this.xCoordinate -= direction.getxComponent();
-        this.yCoordinate -= direction.getyComponent();
+        int newXCoordinate = xCoordinate - direction.getxComponent();
+        int newYCoordinate = yCoordinate - direction.getyComponent();
 
+        this.xCoordinate =  (newXCoordinate + 100) % 100;
+        this.yCoordinate = (newYCoordinate + 100) % 100;
     }
+
 
     // Rotate the rover 90 degrees clockwise
     public void rotateRight() {
@@ -51,4 +57,8 @@ public class Rover {
     public void rotateLeft() {
         this.direction = direction.rotateLeft();
     }
-}
+
+
+
+
+ }

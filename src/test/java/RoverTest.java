@@ -36,7 +36,7 @@ public class RoverTest {
     public void roverCanMoveOneStepBackward() {
         assertPosDir(rover, 0, 0, Direction.N);
         rover.moveBackward();
-        assertPosDir(rover, 0, -1, Direction.N);
+        assertPosDir(rover, 0, 99, Direction.N);
     }
 
     @Test
@@ -91,4 +91,37 @@ public class RoverTest {
         rover.moveForward();
         assertPosDir(rover, 1, 1, Direction.E);
     }
+
+    @Test
+    public void roverWrapsAroundThePlanetWhileMovingNorth() {
+        rover = new Rover(99, 99, Direction.N);
+        assertPosDir(rover, 99, 99, Direction.N);
+        rover.moveForward();
+        assertPosDir(rover, 99, 0, Direction.N);
+    }
+
+    @Test
+    public void roverWrapsAroundThePlanetWhileMovingEast() {
+        rover = new Rover(99, 99, Direction.E);
+        assertPosDir(rover, 99, 99, Direction.E);
+        rover.moveForward();
+        assertPosDir(rover, 0, 99, Direction.E);
+    }
+
+    @Test
+    public void roverWrapsAroundThePlanetWhileMovingSouth() {
+        rover = new Rover(0, 0, Direction.S);
+        assertPosDir(rover, 0, 0, Direction.S);
+        rover.moveForward();
+        assertPosDir(rover, 0, 99, Direction.S);
+    }
+
+    @Test
+    public void roverWrapsAroundThePlanetWhileMovingWest() {
+        rover = new Rover(0, 0, Direction.W);
+        assertPosDir(rover, 0, 0, Direction.W);
+        rover.moveForward();
+        assertPosDir(rover, 99, 0, Direction.W);
+    }
 }
+
