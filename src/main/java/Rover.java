@@ -104,4 +104,28 @@ public class Rover {
         this.direction = direction.rotateLeft();
     }
 
+    // Execute the commands from the user in the order they were given
+    public void execute(String instructions) {
+        char[] commands = instructions.toCharArray();
+        for (char command: commands) {
+            command = Character.toUpperCase(command);
+            switch (command) {
+                case 'F':
+                    moveForward();
+                    break;
+                case 'B':
+                    moveBackward();
+                    break;
+                case 'L':
+                    rotateLeft();
+                    break;
+                case 'R':
+                    rotateRight();
+                    break;
+                default:
+                    System.out.println(command +  " is an invalid command");
+            }
+        }
+    }
+
  }

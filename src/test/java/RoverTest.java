@@ -134,5 +134,12 @@ public class RoverTest {
         rover.moveForward();
         assertPosDir(rover, 0, 0, Direction.N);
     }
+
+    @Test
+    public void roverCanFollowInstructions() {
+        assertPosDir(rover, 0, 0, Direction.N);
+        rover.execute("FFRFF");
+        assertPosDir(rover, 2, 2, Direction.E);
+    }
 }
 
