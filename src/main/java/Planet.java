@@ -1,5 +1,7 @@
 package main.java;
 
+import java.util.Arrays;
+
 public class Planet {
     private int length;
     private int width;
@@ -9,12 +11,20 @@ public class Planet {
         this.length = length;
         this.width = width;
         this.grid = new int[length][width];
+        fillGrid();
     }
 
     public Planet(int[][] grid) {
         this.grid = grid;
         this.length = grid.length;
         this.width = grid[0].length;
+        fillGrid();
+    }
+
+    private void fillGrid() {
+        for (int i = 0; i < length; i++) {
+            Arrays.fill(grid[i], 0);
+        }
     }
 
     public Planet() {
@@ -27,5 +37,14 @@ public class Planet {
 
     public int getWidth() {
         return width;
+    }
+
+
+    public void addObstacle(int xCoordinate, int yCoordinate) {
+        this.grid[yCoordinate][xCoordinate] = -1;
+    }
+
+    public boolean hasObstacle(int xCoordinate, int yCoordinate) {
+        return this.grid[yCoordinate][xCoordinate] == -1;
     }
 }

@@ -42,8 +42,17 @@ public class Rover {
         int newXCoordinate = xCoordinate + direction.getxComponent();
         int newYCoordinate = yCoordinate + direction.getyComponent();
 
-        this.xCoordinate = wrapXCoordinate(newXCoordinate);
-        this.yCoordinate = wrapYCoordinate(newYCoordinate);
+        newXCoordinate = wrapXCoordinate(newXCoordinate);
+        newYCoordinate = wrapYCoordinate(newYCoordinate);
+
+        if (planet.hasObstacle(newXCoordinate, newYCoordinate)) {
+            System.out.println("Rover has encountered an obstacle at (" +
+                    newXCoordinate + ", " + newYCoordinate + ").");
+            return;
+        }
+
+        this.xCoordinate = newXCoordinate;
+        this.yCoordinate = newYCoordinate;
     }
 
     // Moves backward by subtracting the directional components from rover's
@@ -52,8 +61,17 @@ public class Rover {
         int newXCoordinate = xCoordinate - direction.getxComponent();
         int newYCoordinate = yCoordinate - direction.getyComponent();
 
-        this.xCoordinate = wrapXCoordinate(newXCoordinate);
-        this.yCoordinate = wrapYCoordinate(newYCoordinate);
+        newXCoordinate = wrapXCoordinate(newXCoordinate);
+        newYCoordinate = wrapYCoordinate(newYCoordinate);
+
+        if (planet.hasObstacle(newXCoordinate, newYCoordinate)) {
+            System.out.println("Rover has encountered an obstacle at (" +
+                                newXCoordinate + ", " + newYCoordinate + ").");
+            return;
+        }
+
+        this.xCoordinate = newXCoordinate;
+        this.yCoordinate = newYCoordinate;
     }
 
     // Helper method that wraps the given x coordinate according to the

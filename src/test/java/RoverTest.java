@@ -1,6 +1,7 @@
 package test.java;
 
 import main.java.Direction;
+import main.java.Planet;
 import main.java.Rover;
 import org.junit.Assert;
 import org.junit.Before;
@@ -122,6 +123,16 @@ public class RoverTest {
         assertPosDir(rover, 0, 0, Direction.W);
         rover.moveForward();
         assertPosDir(rover, 99, 0, Direction.W);
+    }
+
+    @Test
+    public void doesNotMoveIntoAnObstacle() {
+        Planet planet = new Planet();
+        planet.addObstacle(0,1);
+        rover = new Rover(0, 0, Direction.N, planet);
+        assertPosDir(rover, 0, 0, Direction.N);
+        rover.moveForward();
+        assertPosDir(rover, 0, 0, Direction.N);
     }
 }
 

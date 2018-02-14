@@ -23,4 +23,11 @@ public class PlanetTest {
         Assert.assertEquals(100, planet.getWidth());
 
     }
+
+    @Test
+    public void canAddAnObstacle() {
+        Assert.assertFalse(planet.hasObstacle(0,0));
+        planet.addObstacle(0,0);
+        Assert.assertTrue(planet.hasObstacle(0,0));
+    }
 }
